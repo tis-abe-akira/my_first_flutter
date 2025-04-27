@@ -192,14 +192,29 @@ class FavoritesPage extends StatelessWidget {
       );
     }
 
-    return ListView(
-      children: [
-        for (var pair in favorites)
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asPascalCase),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'You have ${favorites.length} favorites:',
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
-      ],
+          SizedBox(height: 10),
+          Expanded(
+            child: ListView(
+              children: [
+                for (var pair in favorites)
+                  ListTile(
+                    leading: Icon(Icons.favorite),
+                    title: Text(pair.asPascalCase),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
